@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>BellaVie | Onde a moda ganha alma</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- AVISO -->
+    <div class="top-bar">
+        ✦ Frete grátis em compras acima de R$ 299 ✦
+    </div>
+
+    <!-- HEADER -->
+    <header class="header">
+
+        <a href="#inicio" class="logo">
+            <span>Bella</span>Vie
+        </a>
+
+        <nav class="nav" id="nav">
+            <a href="#inicio">Início</a>
+            <a href="#colecao">Coleção</a>
+            <a href="#experiencia">Experiência</a>
+            <a href="#sobre">Sobre nós</a>
+            <a href="#contato">Contato</a>
+        </nav>
+
+        <div class="header-icons">
+            <button onclick="abrirBusca()" aria-label="Pesquisar">⌕</button>
+            <button onclick="abrirCarrinho()" aria-label="Carrinho">🛍</button>
+            <button class="menu-mobile" onclick="abrirMenu()">☰</button>
+        </div>
+
+    </header>
+
+    <!-- BUSCA -->
+    <div class="search-box" id="searchBox">
+        <input type="text" id="searchInput" placeholder="O que você procura?">
+        <button onclick="pesquisar()">Buscar</button>
+    </div>
+
+
+    <!-- HERO -->
+    <main>
+
+        <section class="hero" id="inicio">
+
+            <div class="hero-content">
+
+                <span class="small-title">NOVA COLEÇÃO • BELLA VIE</span>
+
+                <h1>
+                    Onde a moda<br>
+                    <em>ganha alma.</em>
+                </h1>
+
+                <p>
+                    Estilo, conforto e personalidade para todos os momentos
+                    e para toda a família.
+                </p>
+
+                <div class="hero-buttons">
+                    <a href="#colecao" class="btn-primary">
+                        Conheça a coleção
+                    </a>
+
+                    <a href="#sobre" class="btn-secondary">
+                        Descubra a BellaVie
+                    </a>
+                </div>
+
+            </div>
+
+            <div class="hero-decoration">
+                <div class="circle"></div>
+
+                <div class="fashion-card">
+                    <span>BELLA</span>
+                    <strong>VIE</strong>
+                    <small>MODA • ESTILO • ESSÊNCIA</small>
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- CATEGORIAS -->
+        <section class="categories">
+
+            <div class="section-heading">
+                <span>PARA TODOS</span>
+                <h2>Encontre seu estilo</h2>
+            </div>
+
+            <div class="category-grid">
+
+                <button class="category-card" onclick="filtrarCategoria('Feminino')">
+                    <div class="category-number">01</div>
+                    <h3>Feminino</h3>
+                    <p>Elegância para todos os momentos.</p>
+                    <span>Explorar →</span>
+                </button>
+
+                <button class="category-card" onclick="filtrarCategoria('Masculino')">
+                    <div class="category-number">02</div>
+                    <h3>Masculino</h3>
+                    <p>Conforto e personalidade.</p>
+                    <span>Explorar →</span>
+                </button>
+
+                <button class="category-card" onclick="filtrarCategoria('Infantil')">
+                    <div class="category-number">03</div>
+                    <h3>Infantil</h3>
+                    <p>Estilo para os pequenos.</p>
+                    <span>Explorar →</span>
+                </button>
+
+                <button class="category-card" onclick="filtrarCategoria('Família')">
+                    <div class="category-number">04</div>
+                    <h3>Família</h3>
+                    <p>Moda para todos em um só lugar.</p>
+                    <span>Explorar →</span>
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- COLEÇÃO -->
+        <section class="collection" id="colecao">
+
+            <div class="section-heading center">
+                <span>SELEÇÃO BELLA VIE</span>
+                <h2>Peças que contam histórias</h2>
+                <p>
+                    Descubra peças pensadas para unir beleza, conforto e
+                    personalidade.
+                </p>
+            </div>
+
+            <div class="products">
+
+                <article class="product-card">
+
+                    <div class="product-image product-one">
+                        <span class="tag">NOVO</span>
+
+                        <button class="heart" onclick="favoritar(this)">
+                            ♡
+                        </button>
+                    </div>
+
+                    <div class="product-info">
+                        <span>FEMININO</span>
+                        <h3>Elegance Dress</h3>
+                        <p>R$ 189,90</p>
+
+                        <button onclick="adicionarCarrinho('Elegance Dress')">
+                            Adicionar à sacola
+                        </button>
+                    </div>
+
+                </article>
+
+
+                <article class="product-card">
+
+                    <div class="product-image product-two">
+
+                        <button class="heart" onclick="favoritar(this)">
+                            ♡
+                        </button>
+
+                    </div>
+
+                    <div class="product-info">
+                        <span>MASCULINO</span>
+                        <h3>Urban Essential</h3>
+                        <p>R$ 159,90</p>
+
+                        <button onclick="adicionarCarrinho('Urban Essential')">
+                            Adicionar à sacola
+                        </button>
+                    </div>
+
+                </article>
+
+
+                <article class="product-card">
+
+                    <div class="product-image product-three">
+                        <span class="tag">DESTAQUE</span>
+
+                        <button class="heart" onclick="favoritar(this)">
+                            ♡
+                        </button>
+
+                    </div>
+
+                    <div class="product-info">
+                        <span>FAMÍLIA</span>
+                        <h3>Comfort Collection</h3>
+                        <p>R$ 129,90</p>
+
+                        <button onclick="adicionarCarrinho('Comfort Collection')">
+                            Adicionar à sacola
+                        </button>
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- EXPERIÊNCIA -->
+        <section class="experience" id="experiencia">
+
+            <div class="experience-text">
+
+                <span>UMA NOVA EXPERIÊNCIA</span>
+
+                <h2>
+                    Mais do que comprar roupas.
+                    <em>É viver a moda.</em>
+                </h2>
+
+                <p>
+                    Na BellaVie, cada detalhe foi pensado para tornar sua
+                    experiência mais simples, personalizada e especial.
+                </p>
+
+                <a href="#diferenciais" class="btn-light">
+                    Conheça nossos diferenciais
+                </a>
+
+            </div>
+
+            <div class="experience-box">
+
+                <div>
+                    <strong>01</strong>
+                    <h3>Personal Shopper</h3>
+                    <p>
+                        Atendimento personalizado de acordo com seu estilo,
+                        ocasião e orçamento.
+                    </p>
+                </div>
+
+                <div>
+                    <strong>02</strong>
+                    <h3>Espelho Inteligente</h3>
+                    <p>
+                        Sugestões de combinações, acessórios e looks.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- DIFERENCIAIS -->
+        <section class="differentials" id="diferenciais">
+
+            <div class="section-heading center">
+
+                <span>POR QUE BELLA VIE?</span>
+
+                <h2>Detalhes que fazem a diferença</h2>
+
+            </div>
+
+            <div class="differential-grid">
+
+                <div class="differential">
+                    <span>✦</span>
+                    <h3>BellaCycle</h3>
+                    <p>
+                        Você pode trazer roupas de qualquer marca para
+                        reciclagem e receber benefícios.
+                    </p>
+                </div>
+
+                <div class="differential">
+                    <span>✦</span>
+                    <h3>QR Code</h3>
+                    <p>
+                        Informações sobre tecido, cuidados e inspirações
+                        diretamente na etiqueta.
+                    </p>
+                </div>
+
+                <div class="differential">
+                    <span>✦</span>
+                    <h3>Plantable Tag</h3>
+                    <p>
+                        Uma etiqueta especial que pode ser plantada após
+                        a compra.
+                    </p>
+                </div>
+
+                <div class="differential">
+                    <span>✦</span>
+                    <h3>Troca Fácil</h3>
+                    <p>
+                        Um processo simples para deixar sua experiência
+                        ainda mais tranquila.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- SOBRE -->
+        <section class="about" id="sobre">
+
+            <div class="about-decoration">
+                <span>B</span>
+            </div>
+
+            <div class="about-content">
+
+                <span>NOSSA ESSÊNCIA</span>
+
+                <h2>
+                    Moda acessível,
+                    <em>com alma.</em>
+                </h2>
+
+                <p>
+                    A BellaVie nasceu para tornar a moda mais acessível,
+                    confortável e especial para todas as idades.
+                </p>
+
+                <p>
+                    Reunimos diferentes estilos, tamanhos e necessidades
+                    em um só lugar, oferecendo qualidade e atendimento
+                    personalizado.
+                </p>
+
+                <a href="#contato" class="text-link">
+                    Conheça a BellaVie →
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- NEWSLETTER -->
+        <section class="newsletter">
+
+            <div>
+                <span>FIQUE POR DENTRO</span>
+
+                <h2>
+                    Receba novidades<br>
+                    da BellaVie.
+                </h2>
+            </div>
+
+            <form onsubmit="inscrever(event)">
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Seu melhor e-mail"
+                    required
+                >
+
+                <button type="submit">
+                    Inscrever-se
+                </button>
+
+            </form>
+
+        </section>
+
+    </main>
+
+
+    <!-- CARRINHO -->
+    <div class="cart-overlay" id="cartOverlay" onclick="fecharCarrinho()">
+
+        <div class="cart" onclick="event.stopPropagation()">
+
+            <button class="close" onclick="fecharCarrinho()">×</button>
+
+            <span>SUA SACOLA</span>
+
+            <h2>BellaVie</h2>
+
+            <div id="cartItems">
+                <p class="empty-cart">
+                    Sua sacola está vazia.
+                </p>
+            </div>
+
+            <div class="cart-total">
+                <span>Total</span>
+                <strong id="cartTotal">R$ 0,00</strong>
+            </div>
+
+            <button class="checkout" onclick="finalizarCompra()">
+                Continuar compra
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- FOOTER -->
+    <footer id="contato">
+
+        <div class="footer-main">
+
+            <div class="footer-brand">
+
+                <div class="logo">
+                    <span>Bella</span>Vie
+                </div>
+
+                <p>
+                    Onde a moda ganha alma.
+                </p>
+
+            </div>
+
+            <div>
+                <h4>BELLA VIE</h4>
+                <a href="#sobre">Sobre nós</a>
+                <a href="#experiencia">Nossa experiência</a>
+                <a href="#colecao">Coleções</a>
+            </div>
+
+            <div>
+                <h4>ATENDIMENTO</h4>
+                <a href="#">WhatsApp</a>
+                <a href="#">Instagram</a>
+                <a href="#">E-mail</a>
+            </div>
+
+            <div>
+                <h4>INFORMAÇÕES</h4>
+                <a href="#">Trocas e devoluções</a>
+                <a href="#">Entrega</a>
+                <a href="#">Privacidade</a>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            © 2026 BellaVie — Onde a moda ganha alma.
+        </div>
+
+    </footer>
+
+
+    <div class="toast" id="toast">
+        Produto adicionado à sacola ✦
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
