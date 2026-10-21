@@ -1,0 +1,842 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#5b101d">
+<meta name="description" content="BellaVie — moda para todos os momentos. Onde a moda ganha alma.">
+<title>BellaVie — Onde a moda ganha alma</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --wine:#5b101d;
+  --wine-dark:#350711;
+  --wine-light:#7b2534;
+  --cream:#faf5ed;
+  --paper:#fffdf9;
+  --gold:#c8a66a;
+  --gold-light:#ead8b5;
+  --ink:#282020;
+  --muted:#82736b;
+  --line:#e9dfd5;
+  --green:#496b50;
+  --shadow:0 20px 70px #32101618;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:110px}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"DM Sans",sans-serif}
+body.lock{overflow:hidden}
+button,input,select{font:inherit}
+button,a{-webkit-tap-highlight-color:transparent}
+button{cursor:pointer}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+[hidden]{display:none!important}
+
+.announcement{
+  min-height:31px;display:flex;align-items:center;justify-content:center;
+  padding:7px 16px;background:var(--wine-dark);color:#f7ead7;
+  text-align:center;font-size:10px;letter-spacing:1.7px;text-transform:uppercase
+}
+.header{
+  height:84px;position:sticky;top:0;z-index:30;
+  display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:20px;
+  padding:0 5%;background:#fffdf9f5;border-bottom:1px solid var(--line);
+  backdrop-filter:blur(16px)
+}
+.brand{display:inline-flex;flex-direction:column;width:max-content;line-height:1}
+.brand-name{font:700 34px "Playfair Display",serif;letter-spacing:-2px;color:var(--wine)}
+.brand-name span{color:var(--gold)}
+.brand-tag{font-size:9px;letter-spacing:1.8px;margin-top:6px;color:var(--wine)}
+.nav{display:flex;gap:26px;align-items:center}
+.nav a{font-size:11px;text-transform:uppercase;letter-spacing:1px;padding:32px 0;position:relative}
+.nav a:after{content:"";position:absolute;bottom:22px;left:0;width:0;height:1px;background:var(--wine);transition:.25s}
+.nav a:hover:after{width:100%}
+.header-actions{display:flex;justify-content:flex-end;align-items:center;gap:17px}
+.icon-btn{border:0;background:transparent;color:var(--wine);font-size:20px;position:relative;padding:5px}
+.count{position:absolute;top:-5px;right:-7px;background:var(--wine);color:white;border-radius:50%;font-size:9px;min-width:17px;height:17px;display:grid;place-items:center}
+.menu-btn{display:none}
+.mobile-nav{display:none}
+
+.hero{min-height:570px;display:grid;grid-template-columns: .94fr 1.06fr;background:var(--cream)}
+.hero-copy{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:70px clamp(25px,7vw,105px)}
+.kicker{font-size:10px;letter-spacing:2.7px;text-transform:uppercase;color:var(--wine-light);font-weight:700}
+.hero h1{font:500 clamp(50px,6.1vw,88px)/.99 "Playfair Display",serif;letter-spacing:-3.5px;color:var(--wine);margin:25px 0 22px}
+.hero h1 em{color:#a17c48;font-weight:500}
+.hero-copy>p{font-size:13px;line-height:1.9;max-width:360px;color:#6e5c53}
+.btn{min-height:45px;display:inline-flex;align-items:center;justify-content:center;gap:9px;border:1px solid transparent;padding:13px 22px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;transition:.22s}
+.btn-dark{background:var(--wine);color:white}
+.btn-dark:hover{background:var(--wine-dark);transform:translateY(-2px)}
+.btn-gold{background:var(--gold);color:#321b16}
+.btn-outline{border-color:var(--wine);color:var(--wine);background:transparent}
+.btn-outline:hover{background:var(--wine);color:white}
+.hero-links{display:flex;gap:11px;flex-wrap:wrap;margin-top:20px}
+.hero-foot{font-size:10px;color:var(--muted);margin-top:34px;letter-spacing:.3px}
+.hero-image{position:relative;min-height:490px;overflow:hidden;background:#d8c4b2}
+.hero-image>img{width:100%;height:100%;position:absolute;inset:0;object-fit:cover;object-position:center}
+.hero-image:after{content:"";position:absolute;inset:45% 0 0;background:linear-gradient(transparent,#17070b66)}
+.hero-caption{position:absolute;z-index:1;bottom:35px;left:35px;color:white}
+.hero-caption small{display:block;font-size:9px;letter-spacing:2px;text-transform:uppercase}
+.hero-caption strong{display:block;font:500 32px "Playfair Display",serif;margin-top:7px}
+.hero-index{position:absolute;right:25px;top:25px;color:white;font-size:10px;letter-spacing:2px;z-index:1}
+
+.perks{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--line);padding:22px 5%;gap:18px;background:white}
+.perk{display:flex;align-items:center;justify-content:center;gap:12px}
+.perk-icon{font-size:21px;color:var(--gold)}
+.perk strong{font-size:10px;display:block;letter-spacing:.6px}
+.perk small{display:block;color:var(--muted);font-size:10px;margin-top:4px}
+
+.section{padding:80px 5%}
+.section-top{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:28px}
+.section h2,.story h2,.newsletter h2{font:500 clamp(32px,4vw,49px)/1.12 "Playfair Display",serif;color:var(--wine);letter-spacing:-1px;margin:10px 0 0}
+.section-intro{font-size:12px;color:var(--muted);max-width:300px;line-height:1.8}
+.text-link{display:inline-block;border-bottom:1px solid var(--gold);padding-bottom:5px;font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--wine)}
+.categories{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.category-card{position:relative;min-height:310px;overflow:hidden;background:#e7d8c8}
+.category-card img{width:100%;height:100%;position:absolute;inset:0;object-fit:cover;transition:transform .6s}
+.category-card:hover img{transform:scale(1.05)}
+.category-card:after{content:"";position:absolute;inset:40% 0 0;background:linear-gradient(transparent,#17070bbd)}
+.category-info{position:absolute;bottom:23px;left:23px;right:23px;z-index:1;color:white}
+.category-info small{font-size:9px;letter-spacing:2px;text-transform:uppercase}
+.category-info h3{font:500 29px "Playfair Display",serif;margin:7px 0 12px}
+.category-info span{font-size:10px;border-bottom:1px solid var(--gold-light);padding-bottom:4px}
+
+.shop{background:#faf5ed}
+.shop .section-top{margin-bottom:24px}
+.shop-tools{display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap;margin-bottom:20px}
+.filters{display:flex;gap:7px;flex-wrap:wrap}
+.filter{border:1px solid #ded0c3;background:transparent;padding:9px 15px;border-radius:30px;color:var(--wine);font-size:10px}
+.filter.active,.filter:hover{background:var(--wine);color:white;border-color:var(--wine)}
+.shop-tools select,.search-box input,.price-filter input{border:1px solid #ded0c3;background:#fffdf9;color:var(--ink);padding:11px;font-size:11px;min-width:0}
+.shop-tools select{max-width:180px}
+.search-box{position:relative;flex:1;max-width:260px}
+.search-box input{width:100%;padding-left:35px}
+.search-symbol{position:absolute;left:12px;top:8px;color:var(--muted);font-size:16px}
+.advanced-tools{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:23px}
+.advanced-tools label{font-size:10px;color:var(--muted)}
+.advanced-tools select{margin-left:5px;border:1px solid #ded0c3;padding:8px;background:white;font-size:11px}
+.result-count{font-size:10px;color:var(--muted);margin-left:auto}
+.products{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:25px 15px}
+.product{min-width:0}
+.product-photo{aspect-ratio:3/4;position:relative;overflow:hidden;background:#e8ded4}
+.product-photo img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.product:hover .product-photo img{transform:scale(1.035)}
+.product-label{position:absolute;left:10px;top:10px;background:#fffdf9ed;color:var(--wine);padding:6px 8px;font-size:8px;text-transform:uppercase;letter-spacing:.7px}
+.fav{position:absolute;right:10px;top:10px;width:34px;height:34px;border:0;border-radius:50%;background:#fffdf9e8;color:var(--wine);font-size:19px}
+.fav.liked{background:var(--wine);color:white}
+.quick-add{position:absolute;bottom:0;left:0;right:0;width:100%;background:#fffdf9f2;border:0;border-top:1px solid #ffffff;color:var(--wine);padding:14px;font-size:10px;text-transform:uppercase;letter-spacing:.9px;transform:translateY(100%);transition:.25s}
+.product:hover .quick-add,.quick-add:focus{transform:translateY(0)}
+.product-info{padding:12px 1px 0}
+.product-meta{display:flex;justify-content:space-between;gap:8px;font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}
+.product-name{font:500 17px "Playfair Display",serif;color:var(--wine);margin:7px 0}
+.product-rating{font-size:10px;color:#a17c48}
+.product-rating span{color:var(--muted);margin-left:4px}
+.product-price{font-size:12px;font-weight:700;margin-top:8px}
+.old-price{text-decoration:line-through;color:#998a81;font-weight:400;margin-right:6px}
+.product-sizes{font-size:9px;color:var(--muted);margin-top:6px}
+.empty-state{grid-column:1/-1;padding:45px;text-align:center;color:var(--muted);font-size:13px}
+.load-row{text-align:center;margin-top:36px}
+.load-row .btn{min-width:200px}
+
+.promo{margin:0 5%;display:grid;grid-template-columns:1.05fr .95fr;min-height:340px;background:var(--wine);color:white;overflow:hidden}
+.promo-copy{align-self:center;padding:45px clamp(25px,5vw,70px)}
+.promo-copy .kicker{color:var(--gold-light)}
+.promo h2{font:500 clamp(32px,4vw,52px)/1.08 "Playfair Display",serif;margin:16px 0;color:#fff7eb}
+.promo p{font-size:12px;color:#eadbd2;line-height:1.8;max-width:350px}
+.promo img{width:100%;height:100%;min-height:340px;object-fit:cover}
+.promo .btn{margin-top:15px}
+
+.story{display:grid;grid-template-columns:1fr 1fr;background:var(--cream);margin-top:75px}
+.story-photo{min-height:390px;position:relative}
+.story-photo img{position:absolute;width:100%;height:100%;inset:0;object-fit:cover}
+.story-copy{align-self:center;padding:clamp(30px,6vw,80px)}
+.story-copy p:not(.kicker){font-size:12px;line-height:1.9;color:#6e5d54;max-width:430px}
+.story-copy .btn{margin-top:15px}
+
+.reviews{padding:80px 5%;text-align:center}
+.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:30px;text-align:left}
+.review{padding:24px;background:#fff;border:1px solid var(--line)}
+.review-stars{color:#a17c48;letter-spacing:2px;font-size:12px}
+.review blockquote{padding:0;margin:15px 0;font:italic 17px/1.55 "Playfair Display",serif;color:var(--wine)}
+.review strong{font-size:10px;display:block}
+.review small{font-size:9px;color:var(--muted)}
+.demo-label{display:block;font-size:9px;color:var(--muted);margin-top:22px}
+
+.newsletter{background:#eee2d2;padding:55px 5%;display:flex;justify-content:space-between;align-items:center;gap:35px}
+.newsletter h2{font-size:clamp(27px,3vw,39px)}
+.newsletter p{font-size:11px;color:var(--muted)}
+.newsletter-form{display:flex;gap:8px;max-width:470px;width:100%;flex-wrap:wrap}
+.newsletter-form input{flex:1;min-width:170px;border:1px solid #d9c8b6;padding:14px;background:#fffdf9;font-size:11px}
+.newsletter-form small{width:100%;font-size:9px;color:var(--muted)}
+
+footer{background:var(--wine-dark);color:#f9efe4;padding:48px 5% 20px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.3fr;gap:30px}
+footer .brand-name{color:#fff4e7}
+footer .brand-tag{color:var(--gold-light)}
+.footer-about p{max-width:260px;font-size:11px;color:#d4beb3;line-height:1.8;margin-top:18px}
+.footer-col{display:flex;flex-direction:column;align-items:flex-start;gap:11px}
+.footer-col strong{font-size:10px;color:var(--gold-light);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:5px}
+.footer-col a,.footer-col span{font-size:10px;color:#e4d4ca}
+.footer-col a:hover{color:var(--gold-light)}
+.footer-bottom{border-top:1px solid #ffffff28;margin-top:35px;padding-top:18px;display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap;font-size:9px;color:#cbb4a9}
+
+.toast{position:fixed;z-index:100;left:50%;bottom:22px;transform:translate(-50%,15px);opacity:0;pointer-events:none;background:var(--wine-dark);color:white;padding:14px 20px;box-shadow:var(--shadow);font-size:11px;transition:.25s;max-width:90%;text-align:center}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+.overlay{position:fixed;inset:0;z-index:60;background:#17070bb0;display:flex;justify-content:flex-end}
+.drawer{width:min(440px,100%);height:100%;background:var(--paper);padding:23px;display:flex;flex-direction:column;animation:slidein .25s ease}
+@keyframes slidein{from{transform:translateX(40px);opacity:.5}to{transform:translateX(0);opacity:1}}
+.drawer-head{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:16px}
+.drawer-head h2{font:500 28px "Playfair Display",serif;color:var(--wine);margin:0}
+.close{border:0;background:none;font-size:28px;color:var(--wine)}
+.cart-list{flex:1;overflow:auto}
+.cart-row{display:grid;grid-template-columns:72px 1fr auto;gap:12px;padding:15px 0;border-bottom:1px solid var(--line)}
+.cart-row img{width:72px;height:92px;object-fit:cover}
+.cart-row strong{font:500 15px "Playfair Display",serif;color:var(--wine)}
+.cart-row small{display:block;font-size:10px;color:var(--muted);margin-top:5px}
+.qty{display:flex;align-items:center;gap:9px;margin-top:10px}
+.qty button{width:25px;height:25px;background:white;border:1px solid var(--line);color:var(--wine)}
+.remove-item{border:0;background:none;color:var(--muted);font-size:10px;margin-top:8px}
+.cart-footer{border-top:1px solid var(--line);padding-top:14px}
+.cart-line{display:flex;justify-content:space-between;gap:12px;font-size:12px;margin:9px 0}
+.cart-line.total{font-weight:700;font-size:15px;color:var(--wine)}
+.coupon{display:flex;gap:6px;margin:12px 0}
+.coupon input{min-width:0;flex:1;border:1px solid var(--line);padding:10px;font-size:11px}
+.coupon button{border:1px solid var(--wine);background:transparent;color:var(--wine);font-size:10px;padding:0 12px}
+.cart-footer .btn{width:100%}
+.fine-print{font-size:9px;color:var(--muted);line-height:1.6;text-align:center;margin-top:10px}
+.cart-empty{text-align:center;padding:45px 10px;color:var(--muted);font-size:12px}
+
+.modal{position:fixed;inset:0;z-index:70;display:grid;place-items:center;padding:18px}
+.modal-backdrop{position:absolute;inset:0;background:#17070bb8;backdrop-filter:blur(3px)}
+.modal-card{position:relative;z-index:1;width:min(850px,100%);max-height:92vh;overflow:auto;background:var(--paper);padding:25px;border:1px solid var(--gold)}
+.modal-close{position:absolute;top:10px;right:12px;z-index:2;width:35px;height:35px;border:0;border-radius:50%;background:var(--cream);color:var(--wine);font-size:24px}
+.detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+.detail-photo img{width:100%;height:100%;max-height:570px;object-fit:cover;background:var(--cream)}
+.detail-info{padding:20px 5px}
+.detail-info h2{font:500 38px/1.1 "Playfair Display",serif;color:var(--wine);margin:10px 0}
+.detail-price{font-size:18px;font-weight:700;color:var(--wine);margin:17px 0}
+.detail-description{font-size:12px;color:var(--muted);line-height:1.9}
+.option-label{display:block;font-size:10px;margin:19px 0 8px}
+.option-list{display:flex;gap:8px;flex-wrap:wrap}
+.option{border:1px solid var(--line);background:white;color:var(--wine);padding:9px 12px;font-size:10px}
+.option.selected,.option:hover{background:var(--wine);color:white;border-color:var(--wine)}
+.detail-info .btn{width:100%;margin-top:20px}
+.detail-note{font-size:9px;color:var(--muted);line-height:1.6}
+.heart-row{margin-top:12px;text-align:center}
+.heart-row button{border:0;background:none;color:var(--wine);font-size:11px}
+
+@media(min-width:1100px){
+  .quick-add{transform:translateY(100%)}
+}
+@media(max-width:900px){
+  .header{padding:0 3%;gap:12px}
+  .nav{gap:13px}
+  .nav a{font-size:9px}
+  .brand-name{font-size:29px}
+  .hero-copy{padding:45px}
+  .products{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .footer-grid{grid-template-columns:1.5fr 1fr 1fr}
+  .footer-col:last-child{grid-column:2}
+}
+@media(max-width:650px){
+  .announcement{font-size:8px;letter-spacing:1px}
+  .header{height:72px;grid-template-columns:1fr auto;padding:0 18px}
+  .brand-name{font-size:28px}
+  .brand-tag{font-size:8px}
+  .menu-btn{display:inline-flex!important}
+  .nav{display:none}
+  .mobile-nav{position:fixed;top:103px;left:0;right:0;z-index:29;background:var(--paper);padding:15px 22px 24px;border-bottom:1px solid var(--line);box-shadow:var(--shadow)}
+  .mobile-nav.open{display:grid;grid-template-columns:1fr 1fr;gap:0 20px}
+  .mobile-nav a{padding:14px 0;border-bottom:1px solid var(--line);font-size:11px;text-transform:uppercase;letter-spacing:.7px}
+  .header-actions{gap:9px}
+  .hero{grid-template-columns:1fr}
+  .hero-copy{padding:48px 24px}
+  .hero h1{font-size:61px}
+  .hero-image{min-height:390px}
+  .hero-caption{left:20px;bottom:23px}
+  .hero-caption strong{font-size:27px}
+  .perks{grid-template-columns:1fr 1fr;padding:20px 18px;gap:20px 10px}
+  .perk{justify-content:flex-start}
+  .perk strong{font-size:9px}
+  .perk small{font-size:9px}
+  .section{padding:55px 18px}
+  .section-top{align-items:flex-start;flex-direction:column;gap:12px}
+  .section-intro{margin:0}
+  .categories{gap:9px}
+  .category-card{min-height:225px}
+  .category-info{left:12px;right:12px;bottom:13px}
+  .category-info h3{font-size:22px}
+  .category-info small{font-size:8px}
+  .shop-tools{align-items:stretch}
+  .filters{width:100%;overflow-x:auto;flex-wrap:nowrap;padding-bottom:4px}
+  .filter{white-space:nowrap}
+  .search-box{max-width:none;flex-basis:100%}
+  .shop-tools select{max-width:none;width:100%}
+  .advanced-tools{gap:10px}
+  .advanced-tools label{display:flex;align-items:center;gap:5px}
+  .advanced-tools select{max-width:130px}
+  .products{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 10px}
+  .product-name{font-size:15px}
+  .product-label{font-size:7px;left:6px;top:6px;padding:5px}
+  .fav{right:6px;top:6px;width:30px;height:30px}
+  .quick-add{position:static;transform:none;padding:11px 4px;border:0;border-top:1px solid #ffffff}
+  .product-meta{font-size:8px}
+  .promo{margin:0 18px;grid-template-columns:1fr}
+  .promo-copy{padding:32px 23px}
+  .promo img{min-height:260px;max-height:320px}
+  .story{grid-template-columns:1fr;margin-top:50px}
+  .story-photo{min-height:280px}
+  .story-copy{padding:35px 23px}
+  .reviews{padding:55px 18px}
+  .reviews-grid{grid-template-columns:1fr;gap:10px}
+  .review blockquote{font-size:16px}
+  .newsletter{padding:38px 20px;display:block}
+  .newsletter-form{margin-top:20px}
+  .newsletter-form input{flex-basis:100%}
+  .newsletter-form .btn{width:100%}
+  footer{padding:38px 20px 18px}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:28px 16px}
+  .footer-about{grid-column:1/-1}
+  .footer-col:last-child{grid-column:auto}
+  .detail-grid{grid-template-columns:1fr;gap:14px}
+  .detail-photo img{max-height:330px}
+  .detail-info{padding:5px 0}
+  .detail-info h2{font-size:30px}
+  .modal{padding:8px}
+  .modal-card{padding:18px;max-height:94vh}
+  .cart-row{grid-template-columns:60px 1fr auto;gap:9px}
+  .cart-row img{width:60px;height:78px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}
+}
+</style>
+</head>
+
+<body>
+<div class="announcement">BELLAVIE · MODA PARA TODOS OS MOMENTOS · ONDE A MODA GANHA ALMA</div>
+
+<header class="header">
+  <a class="brand" href="#inicio" aria-label="BellaVie página inicial">
+    <span class="brand-name">BellaVie<span>✦</span></span>
+    <span class="brand-tag">ONDE A MODA GANHA ALMA</span>
+  </a>
+
+  <nav class="nav" aria-label="Menu principal">
+    <a href="#novidades">Novidades</a>
+    <a href="#loja">Feminino</a>
+    <a href="#categorias">Masculino</a>
+    <a href="#categorias">Infantil</a>
+    <a href="#sobre">Nossa essência</a>
+  </nav>
+
+  <div class="header-actions">
+    <button class="icon-btn menu-btn" id="menuToggle" aria-label="Abrir menu" style="display:none">☰</button>
+    <button class="icon-btn" id="focusSearch" aria-label="Buscar produtos">⌕</button>
+    <button class="icon-btn" id="openFavorites" aria-label="Ver favoritos">♡<span class="count" id="favCount">0</span></button>
+    <button class="icon-btn" id="openCart" aria-label="Abrir sacola">♧<span class="count" id="cartCount">0</span></button>
+  </div>
+</header>
+
+<nav class="mobile-nav" id="mobileNav" aria-label="Menu para celular">
+  <a href="#novidades">Novidades</a>
+  <a href="#loja">Ver coleção</a>
+  <a href="#categorias">Categorias</a>
+  <a href="#sobre">Nossa essência</a>
+  <a href="#avaliacoes">Avaliações</a>
+</nav>
+
+<main>
+<section class="hero" id="inicio">
+  <div class="hero-copy">
+    <span class="kicker">A nova expressão da moda</span>
+    <h1>Vista sua<br><em>essência.</em></h1>
+    <p>Estilo que acompanha sua história. Descubra peças versáteis para expressar quem você é, todos os dias.</p>
+    <div class="hero-links">
+      <a class="btn btn-dark" href="#loja">Descobrir coleção ↗</a>
+      <a class="btn btn-outline" href="#categorias">Explorar categorias</a>
+    </div>
+    <div class="hero-foot">✦ FEMININO · MASCULINO · INFANTIL</div>
+  </div>
+  <div class="hero-image">
+    <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1400&q=85" alt="Editorial de moda contemporânea" fetchpriority="high">
+    <span class="hero-index">BELLAVIE / 2026</span>
+    <div class="hero-caption">
+      <small>Nova coleção</small>
+      <strong>Essência atemporal</strong>
+    </div>
+  </div>
+</section>
+
+<section class="perks" aria-label="Diferenciais da loja">
+  <div class="perk"><span class="perk-icon">✧</span><span><strong>Estilo versátil</strong><small>Para todos os momentos</small></span></div>
+  <div class="perk"><span class="perk-icon">♡</span><span><strong>Moda para a família</strong><small>Várias gerações, um só lugar</small></span></div>
+  <div class="perk"><span class="perk-icon">♻</span><span><strong>Cuidado com as peças</strong><small>Moda com mais consciência</small></span></div>
+  <div class="perk"><span class="perk-icon">◇</span><span><strong>Experiência BellaVie</strong><small>Detalhes pensados para você</small></span></div>
+</section>
+
+<section class="section" id="categorias">
+  <div class="section-top">
+    <div><span class="kicker">Encontre seu estilo</span><h2>Uma coleção para cada você.</h2></div>
+    <p class="section-intro">Descubra propostas diferentes para acompanhar a rotina, os encontros e as ocasiões especiais.</p>
+  </div>
+  <div class="categories">
+    <a class="category-card" href="#loja" data-jump-category="Feminino">
+      <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=900&q=85" alt="Moda feminina" loading="lazy">
+      <div class="category-info"><small>Elegância cotidiana</small><h3>Feminino</h3><span>EXPLORAR COLEÇÃO ↗</span></div>
+    </a>
+    <a class="category-card" href="#loja" data-jump-category="Masculino">
+      <img src="https://images.unsplash.com/photo-1617137968427-85924c800a22?auto=format&fit=crop&w=900&q=85" alt="Moda masculina" loading="lazy">
+      <div class="category-info"><small>Estilo sem esforço</small><h3>Masculino</h3><span>EXPLORAR COLEÇÃO ↗</span></div>
+    </a>
+    <a class="category-card" href="#loja" data-jump-category="Infantil">
+      <img src="https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?auto=format&fit=crop&w=900&q=85" alt="Moda infantil" loading="lazy">
+      <div class="category-info"><small>Conforto para crescer</small><h3>Infantil</h3><span>EXPLORAR COLEÇÃO ↗</span></div>
+    </a>
+  </div>
+</section>
+
+<section class="section shop" id="loja">
+  <div class="section-top" id="novidades">
+    <div><span class="kicker">Seleção BellaVie</span><h2>Peças que contam histórias.</h2></div>
+    <p class="section-intro">Explore os favoritos da coleção e encontre combinações para o seu estilo.</p>
+  </div>
+
+  <div class="shop-tools">
+    <div class="filters" id="filters">
+      <button class="filter active" data-category="Todos">Tudo</button>
+      <button class="filter" data-category="Feminino">Feminino</button>
+      <button class="filter" data-category="Masculino">Masculino</button>
+      <button class="filter" data-category="Infantil">Infantil</button>
+      <button class="filter" data-category="Acessórios">Acessórios</button>
+    </div>
+    <div class="search-box"><span class="search-symbol">⌕</span><input type="search" id="search" placeholder="Buscar uma peça..." aria-label="Buscar produtos"></div>
+    <select id="sort" aria-label="Ordenar produtos">
+      <option value="featured">Em destaque</option>
+      <option value="low">Menor preço</option>
+      <option value="high">Maior preço</option>
+      <option value="rating">Melhor avaliação</option>
+      <option value="name">Nome A–Z</option>
+    </select>
+  </div>
+
+  <div class="advanced-tools">
+    <label>Preço máximo
+      <select id="maxPrice">
+        <option value="1000">Todos</option>
+        <option value="80">Até R$ 80</option>
+        <option value="120">Até R$ 120</option>
+        <option value="180">Até R$ 180</option>
+        <option value="250">Até R$ 250</option>
+      </select>
+    </label>
+    <label>Tamanho
+      <select id="sizeFilter">
+        <option value="Todos">Todos</option>
+        <option>P</option><option>M</option><option>G</option><option>GG</option>
+      </select>
+    </label>
+    <span class="result-count" id="resultCount" aria-live="polite"></span>
+  </div>
+
+  <div class="products" id="products"></div>
+  <div class="load-row"><button class="btn btn-outline" id="resetFilters">Limpar filtros</button></div>
+  <p class="demo-label">Produtos, valores e avaliações fictícios para demonstração da loja.</p>
+</section>
+
+<section class="promo" id="destaque">
+  <div class="promo-copy">
+    <span class="kicker">Menos descarte, mais criatividade</span>
+    <h2>O cuidado também faz parte do estilo.</h2>
+    <p>Na proposta BellaRepair, pequenos reparos e customizações ajudam a prolongar a vida útil das roupas. Uma nova forma de olhar para o que você já tem.</p>
+    <a href="#sobre" class="btn btn-gold">Conheça nossa essência ↗</a>
+  </div>
+  <img src="https://images.unsplash.com/photo-1452860606245-08befc0ff44b?auto=format&fit=crop&w=1000&q=85" alt="Materiais para costura e criatividade" loading="lazy">
+</section>
+
+<section class="story" id="sobre">
+  <div class="story-photo">
+    <img src="https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&w=1100&q=85" alt="Araras de roupas em boutique" loading="lazy">
+  </div>
+  <div class="story-copy">
+    <span class="kicker">Nossa essência</span>
+    <h2>Onde a moda ganha alma.</h2>
+    <p>A BellaVie é uma proposta de loja de roupas feminina, masculina e infantil que reúne estilo, conforto e praticidade em um só lugar.</p>
+    <p>Queremos que cada pessoa encontre peças que combinem com sua personalidade e com os momentos que tornam a vida especial.</p>
+    <a class="btn btn-dark" href="#loja">Conheça os produtos ↗</a>
+  </div>
+</section>
+
+<section class="reviews" id="avaliacoes">
+  <span class="kicker">Experiências BellaVie</span>
+  <h2 class="section" style="padding:0">O estilo também está nos detalhes.</h2>
+  <div class="reviews-grid">
+    <article class="review"><div class="review-stars">★★★★★</div><blockquote>“Adorei a proposta de encontrar peças versáteis para diferentes momentos.”</blockquote><strong>Mariana R.</strong><small>Comentário ilustrativo</small></article>
+    <article class="review"><div class="review-stars">★★★★★</div><blockquote>“Uma identidade elegante e uma seleção de roupas com muito estilo.”</blockquote><strong>Camila S.</strong><small>Comentário ilustrativo</small></article>
+    <article class="review"><div class="review-stars">★★★★☆</div><blockquote>“Gostei da ideia de unir moda, praticidade e cuidado com as roupas.”</blockquote><strong>André L.</strong><small>Comentário ilustrativo</small></article>
+  </div>
+  <span class="demo-label">Avaliações fictícias, utilizadas apenas para demonstrar o layout.</span>
+</section>
+
+<section class="newsletter">
+  <div><span class="kicker">Cartas da BellaVie</span><h2>Um toque de inspiração na sua caixa de entrada.</h2><p>Cadastre-se para testar a experiência de novidades da marca.</p></div>
+  <form class="newsletter-form" id="newsletter">
+    <input type="email" id="email" placeholder="Seu endereço de e-mail" required aria-label="Seu e-mail">
+    <button class="btn btn-dark" type="submit">Quero receber ↗</button>
+    <small id="newsletterMessage">Formulário demonstrativo: os dados não serão enviados nem armazenados.</small>
+  </form>
+</section>
+</main>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-about">
+      <a class="brand" href="#inicio"><span class="brand-name">BellaVie<span>✦</span></span><span class="brand-tag">ONDE A MODA GANHA ALMA</span></a>
+      <p>Moda, personalidade e praticidade para diferentes estilos e gerações.</p>
+    </div>
+    <div class="footer-col"><strong>Explore</strong><a href="#novidades">Novidades</a><a href="#loja">Coleção</a><a href="#categorias">Categorias</a><a href="#sobre">Nossa essência</a></div>
+    <div class="footer-col"><strong>Ajuda</strong><a href="#loja">Produtos</a><a href="#avaliacoes">Avaliações</a><a href="#newsletter">Novidades</a><span>Protótipo demonstrativo</span></div>
+    <div class="footer-col"><strong>Nosso conceito</strong><a href="#destaque">BellaRepair</a><a href="#sobre">Moda consciente</a><span>Feminino · Masculino · Infantil</span></div>
+  </div>
+  <div class="footer-bottom"><span>© 2026 BellaVie. Projeto demonstrativo.</span><span>Onde a moda ganha alma ✦</span></div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<!-- SACOLA -->
+<div class="overlay" id="cartOverlay" hidden>
+  <aside class="drawer" role="dialog" aria-modal="true" aria-label="Sacola de compras">
+    <div class="drawer-head"><h2>Sua sacola</h2><button class="close" id="closeCart" aria-label="Fechar sacola">×</button></div>
+    <div class="cart-list" id="cartList"></div>
+    <div class="cart-footer">
+      <div class="coupon"><input id="couponInput" placeholder="Cupom demonstrativo" aria-label="Cupom"><button id="applyCoupon">Aplicar</button></div>
+      <div class="cart-line"><span>Subtotal</span><span id="subtotal">R$ 0,00</span></div>
+      <div class="cart-line"><span>Desconto demonstrativo</span><span id="discount">R$ 0,00</span></div>
+      <div class="cart-line total"><span>Total estimado</span><span id="total">R$ 0,00</span></div>
+      <button class="btn btn-dark" id="checkout">Continuar compra ↗</button>
+      <p class="fine-print">Loja demonstrativa. Não são processados pagamentos, pedidos ou entregas reais.</p>
+    </div>
+  </aside>
+</div>
+
+<!-- DETALHES DO PRODUTO -->
+<div class="modal" id="productModal" hidden>
+  <div class="modal-backdrop" data-close-product></div>
+  <section class="modal-card" role="dialog" aria-modal="true" aria-labelledby="detailName">
+    <button class="modal-close" data-close-product aria-label="Fechar">×</button>
+    <div id="detailContent"></div>
+  </section>
+</div>
+
+<script>
+const products = [
+ {id:1,name:"Blazer Elegance",category:"Feminino",price:189.90,rating:4.8,reviews:24,label:"Mais vendido",sizes:["P","M","G","GG"],colors:["Bordô","Preto","Creme"],image:"https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&w=850&q=85",description:"Blazer de inspiração clássica, perfeito para composições sofisticadas e looks urbanos."},
+ {id:2,name:"Calça Serena",category:"Feminino",price:129.90,rating:4.9,reviews:18,label:"Essencial",sizes:["P","M","G","GG"],colors:["Creme","Preto","Marrom"],image:"https://images.unsplash.com/photo-1506629905607-d9b7b4c5b6e8?auto=format&fit=crop&w=850&q=85",description:"Modelagem versátil para compor looks elegantes, confortáveis e contemporâneos."},
+ {id:3,name:"Camisa Urban",category:"Masculino",price:99.90,rating:4.7,reviews:15,label:"Versátil",sizes:["P","M","G","GG"],colors:["Branco","Azul","Preto"],image:"https://images.unsplash.com/photo-1603252109303-2751441dd157?auto=format&fit=crop&w=850&q=85",description:"Uma camisa casual de visual moderno para combinar com diferentes ocasiões."},
+ {id:4,name:"Vestido Aurora",category:"Feminino",price:179.90,rating:4.9,reviews:32,label:"Nova coleção",sizes:["P","M","G","GG"],colors:["Bordô","Preto","Floral"],image:"https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=850&q=85",description:"Vestido de visual delicado, pensado para passeios e ocasiões especiais."},
+ {id:5,name:"Moletom Conforto",category:"Masculino",price:119.90,rating:4.6,reviews:12,label:"Conforto",sizes:["P","M","G","GG"],colors:["Cinza","Preto","Creme"],image:"https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=850&q=85",description:"Moletom casual para dias frescos, viagens e momentos de descanso."},
+ {id:6,name:"Conjunto Mini",category:"Infantil",price:79.90,rating:4.8,reviews:9,label:"Infantil",sizes:["2 anos","4 anos","6 anos","8 anos"],colors:["Creme","Rosa","Azul"],image:"https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?auto=format&fit=crop&w=850&q=85",description:"Conjunto infantil confortável, ideal para acompanhar as brincadeiras."},
+ {id:7,name:"Jaqueta Clássica",category:"Masculino",price:199.90,rating:4.8,reviews:21,label:"Destaque",sizes:["P","M","G","GG"],colors:["Marrom","Preto"],image:"https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=850&q=85",description:"Uma jaqueta que adiciona personalidade a combinações casuais."},
+ {id:8,name:"Vestido Leve",category:"Infantil",price:69.90,rating:4.7,reviews:11,label:"Delicado",sizes:["2 anos","4 anos","6 anos","8 anos"],colors:["Creme","Rosa","Lilás"],image:"https://images.unsplash.com/photo-1518831959646-742c3a14ebf7?auto=format&fit=crop&w=850&q=85",description:"Peça infantil delicada, com proposta confortável para o dia a dia."},
+ {id:9,name:"Bolsa Lumière",category:"Acessórios",price:149.90,rating:4.8,reviews:14,label:"Acessório",sizes:["Único"],colors:["Caramelo","Preto","Creme"],image:"https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=850&q=85",description:"Bolsa de visual atemporal para completar produções de diferentes estilos."},
+ {id:10,name:"Blusa Essencial",category:"Feminino",price:59.90,rating:4.7,reviews:27,label:"Preço especial",sizes:["P","M","G","GG"],colors:["Creme","Bordô","Preto"],image:"https://images.unsplash.com/photo-1564257577-9d5f2d5f5f6a?auto=format&fit=crop&w=850&q=85",description:"Uma blusa essencial, fácil de combinar com calças, saias e sobreposições."},
+ {id:11,name:"Camisa Clássica",category:"Masculino",price:119.90,rating:4.6,reviews:16,label:"Clássico",sizes:["P","M","G","GG"],colors:["Branco","Azul","Creme"],image:"https://images.unsplash.com/photo-1598033129183-c4f50c736f10?auto=format&fit=crop&w=850&q=85",description:"Camisa clássica para ocasiões especiais e combinações elegantes."},
+ {id:12,name:"Jaqueta Mini",category:"Infantil",price:89.90,rating:4.8,reviews:8,label:"Novidade",sizes:["2 anos","4 anos","6 anos","8 anos"],colors:["Creme","Azul","Rosa"],image:"https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?auto=format&fit=crop&w=850&q=85",description:"Uma opção infantil para completar looks em dias mais frescos."}
+];
+
+const $ = id => document.getElementById(id);
+const money = n => n.toLocaleString("pt-BR",{style:"currency",currency:"BRL"});
+let category="Todos", cart=[], favorites=new Set(), selected=null, chosenSize="", chosenColor="", couponOn=false, toastTimer;
+let previousFocus=null;
+
+function toast(message){
+  $("toast").textContent=message;
+  $("toast").classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer=setTimeout(()=>$("toast").classList.remove("show"),2400);
+}
+
+function renderProducts(){
+  const query=$("search").value.trim().toLocaleLowerCase("pt-BR");
+  const max=Number($("maxPrice").value);
+  const size=$("sizeFilter").value;
+  let list=products.filter(p=>
+    (category==="Todos"||p.category===category) &&
+    (p.name+" "+p.category+" "+p.description).toLocaleLowerCase("pt-BR").includes(query) &&
+    p.price<=max &&
+    (size==="Todos"||p.sizes.includes(size))
+  );
+  const sort=$("sort").value;
+  if(sort==="low")list.sort((a,b)=>a.price-b.price);
+  if(sort==="high")list.sort((a,b)=>b.price-a.price);
+  if(sort==="rating")list.sort((a,b)=>b.rating-a.rating);
+  if(sort==="name")list.sort((a,b)=>a.name.localeCompare(b.name,"pt-BR"));
+  $("resultCount").textContent=list.length+" produto(s)";
+  $("products").innerHTML="";
+  if(!list.length){
+    $("products").innerHTML='<div class="empty-state">Nenhuma peça encontrada.<br>Tente alterar os filtros.</div>';
+    return;
+  }
+  list.forEach(p=>{
+    const article=document.createElement("article");
+    article.className="product";
+    article.innerHTML=`
+      <div class="product-photo">
+        <img src="${p.image}" alt="${p.name}" loading="lazy">
+        <span class="product-label">${p.label}</span>
+        <button class="fav ${favorites.has(p.id)?"liked":""}" data-fav="${p.id}" aria-label="Favoritar ${p.name}">${favorites.has(p.id)?"♥":"♡"}</button>
+        <button class="quick-add" data-detail="${p.id}">Ver peça, cores e tamanhos +</button>
+      </div>
+      <div class="product-info">
+        <div class="product-meta"><span>${p.category}</span><span>★ ${p.rating.toFixed(1).replace(".",",")}</span></div>
+        <h3 class="product-name">${p.name}</h3>
+        <div class="product-rating">★★★★★ <span>(${p.reviews} avaliações demonstrativas)</span></div>
+        <div class="product-price">${money(p.price)}</div>
+        <div class="product-sizes">Tamanhos: ${p.sizes.join(" · ")}</div>
+      </div>`;
+    $("products").appendChild(article);
+  });
+}
+
+function setCategory(value){
+  category=value;
+  document.querySelectorAll("[data-category]").forEach(b=>b.classList.toggle("active",b.dataset.category===value));
+  renderProducts();
+}
+
+$("filters").addEventListener("click",e=>{
+  const b=e.target.closest("[data-category]");
+  if(b)setCategory(b.dataset.category);
+});
+document.querySelectorAll("[data-jump-category]").forEach(a=>a.addEventListener("click",()=>setCategory(a.dataset.jumpCategory)));
+$("search").addEventListener("input",renderProducts);
+$("sort").addEventListener("change",renderProducts);
+$("maxPrice").addEventListener("change",renderProducts);
+$("sizeFilter").addEventListener("change",renderProducts);
+$("focusSearch").addEventListener("click",()=>{$("search").focus();$("search").scrollIntoView({behavior:"smooth",block:"center"});});
+$("resetFilters").addEventListener("click",()=>{
+  $("search").value="";
+  $("sort").value="featured";
+  $("maxPrice").value="1000";
+  $("sizeFilter").value="Todos";
+  setCategory("Todos");
+  toast("Filtros redefinidos.");
+});
+
+$("products").addEventListener("click",e=>{
+  const fav=e.target.closest("[data-fav]");
+  if(fav){
+    const id=Number(fav.dataset.fav);
+    favorites.has(id)?favorites.delete(id):favorites.add(id);
+    $("favCount").textContent=favorites.size;
+    renderProducts();
+    toast(favorites.has(id)?"Adicionado aos favoritos.":"Removido dos favoritos.");
+    return;
+  }
+  const detail=e.target.closest("[data-detail]");
+  if(detail)openProduct(Number(detail.dataset.detail));
+});
+
+function openProduct(id){
+  selected=products.find(p=>p.id===id);
+  chosenSize="";
+  chosenColor=selected.colors[0];
+  previousFocus=document.activeElement;
+  $("detailContent").innerHTML=`
+    <div class="detail-grid">
+      <div class="detail-photo"><img src="${selected.image}" alt="${selected.name}"></div>
+      <div class="detail-info">
+        <span class="kicker">${selected.category} · ${selected.label}</span>
+        <h2 id="detailName">${selected.name}</h2>
+        <div class="product-rating">★★★★★ <span>${selected.rating.toFixed(1).replace(".",",")} · ${selected.reviews} avaliações demonstrativas</span></div>
+        <div class="detail-price">${money(selected.price)}</div>
+        <p class="detail-description">${selected.description}</p>
+        <span class="option-label">Cor: <strong id="chosenColor">${chosenColor}</strong></span>
+        <div class="option-list" id="colorOptions"></div>
+        <span class="option-label">Selecione o tamanho</span>
+        <div class="option-list" id="sizeOptions"></div>
+        <p class="detail-note" id="sizeMessage">Escolha a cor e o tamanho para adicionar a peça.</p>
+        <button class="btn btn-dark" id="addSelected">Adicionar à sacola — ${money(selected.price)}</button>
+        <div class="heart-row"><button id="detailFav">♡ Adicionar aos favoritos</button></div>
+        <p class="detail-note">Produto fictício. Tamanhos e cores ilustrativos, sem controle de estoque real.</p>
+      </div>
+    </div>`;
+  selected.colors.forEach((color,i)=>{
+    const b=document.createElement("button");
+    b.className="option"+(i===0?" selected":"");
+    b.textContent=color;
+    b.addEventListener("click",()=>{
+      chosenColor=color;
+      $("chosenColor").textContent=color;
+      $("colorOptions").querySelectorAll("button").forEach(x=>x.classList.toggle("selected",x===b));
+    });
+    $("colorOptions").appendChild(b);
+  });
+  selected.sizes.forEach(size=>{
+    const b=document.createElement("button");
+    b.className="option";
+    b.textContent=size;
+    b.addEventListener("click",()=>{
+      chosenSize=size;
+      $("sizeOptions").querySelectorAll("button").forEach(x=>x.classList.toggle("selected",x===b));
+      $("sizeMessage").textContent="Tamanho selecionado: "+size;
+    });
+    $("sizeOptions").appendChild(b);
+  });
+  $("productModal").hidden=false;
+  document.body.classList.add("lock");
+  $("productModal").querySelector(".modal-close").focus();
+  $("addSelected").addEventListener("click",()=>{
+    if(!chosenSize){$("sizeMessage").textContent="Por favor, escolha um tamanho.";return;}
+    const existing=cart.find(i=>i.id===selected.id&&i.size===chosenSize&&i.color===chosenColor);
+    if(existing)existing.qty++;
+    else cart.push({...selected,size:chosenSize,color:chosenColor,qty:1});
+    renderCart();
+    closeProduct();
+    toast(selected.name+" adicionada à sacola.");
+  });
+  $("detailFav").addEventListener("click",()=>{
+    if(favorites.has(selected.id))favorites.delete(selected.id);else favorites.add(selected.id);
+    $("favCount").textContent=favorites.size;
+    $("detailFav").textContent=favorites.has(selected.id)?"♥ Salvo nos favoritos":"♡ Adicionar aos favoritos";
+    renderProducts();
+  });
+}
+
+function closeProduct(){
+  $("productModal").hidden=true;
+  if($("cartOverlay").hidden)document.body.classList.remove("lock");
+  if(previousFocus&&previousFocus.focus)previousFocus.focus();
+}
+$("productModal").addEventListener("click",e=>{if(e.target.closest("[data-close-product]"))closeProduct();});
+
+function renderCart(){
+  $("cartCount").textContent=cart.reduce((sum,i)=>sum+i.qty,0);
+  const list=$("cartList");
+  list.innerHTML="";
+  if(!cart.length){
+    list.innerHTML='<div class="cart-empty">Sua sacola está vazia.<br>Encontre uma peça para começar.</div>';
+  }else{
+    cart.forEach(item=>{
+      const row=document.createElement("div");
+      row.className="cart-row";
+      row.innerHTML=`
+        <img src="${item.image}" alt="${item.name}">
+        <div><strong>${item.name}</strong><small>Cor: ${item.color} · Tam.: ${item.size}</small>
+        <small>${money(item.price)} cada</small>
+        <div class="qty"><button data-qty="${item.id}" data-size="${item.size}" data-color="${item.color}" data-delta="-1" aria-label="Diminuir">−</button><span>${item.qty}</span><button data-qty="${item.id}" data-size="${item.size}" data-color="${item.color}" data-delta="1" aria-label="Aumentar">+</button></div></div>
+        <div><strong>${money(item.price*item.qty)}</strong><button class="remove-item" data-remove="${item.id}" data-size="${item.size}" data-color="${item.color}">Remover</button></div>`;
+      list.appendChild(row);
+    });
+  }
+  const subtotal=cart.reduce((sum,i)=>sum+i.price*i.qty,0);
+  const discount=couponOn?subtotal*.10:0;
+  $("subtotal").textContent=money(subtotal);
+  $("discount").textContent="- "+money(discount);
+  $("total").textContent=money(subtotal-discount);
+}
+$("cartList").addEventListener("click",e=>{
+  const qty=e.target.closest("[data-qty]");
+  const remove=e.target.closest("[data-remove]");
+  if(qty){
+    const item=cart.find(i=>i.id===Number(qty.dataset.qty)&&i.size===qty.dataset.size&&i.color===qty.dataset.color);
+    if(item){item.qty+=Number(qty.dataset.delta);if(item.qty<=0)cart=cart.filter(i=>i!==item);}
+    renderCart();
+  }
+  if(remove){
+    cart=cart.filter(i=>!(i.id===Number(remove.dataset.remove)&&i.size===remove.dataset.size&&i.color===remove.dataset.color));
+    renderCart();toast("Peça removida da sacola.");
+  }
+});
+
+function openCart(){
+  previousFocus=document.activeElement;
+  $("cartOverlay").hidden=false;
+  document.body.classList.add("lock");
+  $("closeCart").focus();
+}
+function closeCart(){
+  $("cartOverlay").hidden=true;
+  if($("productModal").hidden)document.body.classList.remove("lock");
+  if(previousFocus&&previousFocus.focus)previousFocus.focus();
+}
+$("openCart").addEventListener("click",openCart);
+$("closeCart").addEventListener("click",closeCart);
+$("cartOverlay").addEventListener("click",e=>{if(e.target===$("cartOverlay"))closeCart();});
+
+$("applyCoupon").addEventListener("click",()=>{
+  const code=$("couponInput").value.trim().toUpperCase();
+  if(code==="BELLAVIE10"&&cart.length){
+    couponOn=true;
+    toast("Cupom demonstrativo aplicado: 10% de desconto.");
+  }else if(code==="BELLAVIE10"){
+    toast("Adicione uma peça antes de aplicar o cupom.");
+  }else{
+    couponOn=false;
+    toast("Cupom inválido. Experimente BELLAVIE10.");
+  }
+  renderCart();
+});
+$("checkout").addEventListener("click",()=>{
+  if(!cart.length){toast("Sua sacola está vazia.");return;}
+  toast("Demonstração: nenhuma compra ou pagamento foi realizado.");
+});
+
+$("openFavorites").addEventListener("click",()=>{
+  setCategory("Todos");
+  $("search").value="";
+  $("maxPrice").value="1000";
+  $("sizeFilter").value="Todos";
+  $("sort").value="featured";
+  renderProducts();
+  const saved=products.filter(p=>favorites.has(p.id));
+  if(!saved.length){toast("Você ainda não salvou favoritos.");return;}
+  $("products").innerHTML="";
+  saved.forEach(p=>{
+    const card=document.createElement("article");
+    card.className="product";
+    card.innerHTML=`<div class="product-photo"><img src="${p.image}" alt="${p.name}" loading="lazy"><button class="fav liked" data-fav="${p.id}">♥</button><button class="quick-add" data-detail="${p.id}">Ver produto +</button></div><div class="product-info"><div class="product-meta">${p.category}</div><h3 class="product-name">${p.name}</h3><div class="product-price">${money(p.price)}</div></div>`;
+    $("products").appendChild(card);
+  });
+  $("resultCount").textContent=saved.length+" favorito(s)";
+  $("loja").scrollIntoView({behavior:"smooth"});
+  toast("Mostrando seus favoritos.");
+});
+
+$("newsletter").addEventListener("submit",e=>{
+  e.preventDefault();
+  $("newsletterMessage").textContent="Obrigada! Este formulário é apenas demonstrativo e não enviou seus dados.";
+  $("email").value="";
+  toast("Cadastro demonstrativo concluído.");
+});
+
+$("menuToggle").addEventListener("click",()=>{
+  const nav=$("mobileNav");
+  nav.classList.toggle("open");
+  $("menuToggle").textContent=nav.classList.contains("open")?"×":"☰";
+});
+document.querySelectorAll("#mobileNav a").forEach(a=>a.addEventListener("click",()=>{
+  $("mobileNav").classList.remove("open");
+  $("menuToggle").textContent="☰";
+}));
+document.addEventListener("keydown",e=>{
+  if(e.key==="Escape"){
+    if(!$("productModal").hidden)closeProduct();
+    if(!$("cartOverlay").hidden)closeCart();
+    $("mobileNav").classList.remove("open");
+    $("menuToggle").textContent="☰";
+  }
+});
+
+renderProducts();
+renderCart();
+</script>
+</body>
+</html>
