@@ -401,14 +401,28 @@ footer .brand-tag{color:var(--gold-light)}
       <div class="category-info"><small>Conforto para crescer</small><h3>Infantil</h3><span>EXPLORAR COLEÇÃO ↗</span></div>
       <!-- Coleção Sênior -->
 <div class="category-card">
-  <img src=
+  <img src="idosos.png"
        alt="Coleção Sênior BellaVie">
   <h3>Sênior</h3>
   <p>Elegância e conforto em todas as fases.</p>
   <a href="#loja">Explorar coleção</a>
 </div>
-    </a>
-  </div>
+      <!-- Coleção Teen -->
+<div class="category-card">
+  <img src="teens.png"
+       alt="Coleção Teen BellaVie">
+  <h3>Teen</h3>
+  <p>Estilo, atitude e autenticidade.</p>
+  <a href="#loja">Explorar coleção</a>
+</div>
+      <!-- Coleção Anos 2000 -->
+<div class="category-card">
+  <img src="anos2000.png"
+       alt="Coleção Anos 2000 BellaVie">
+  <h3>Anos 2000</h3>
+  <p>Uma tendência que voltou para ficar.</p>
+  <a href="#loja">Explorar coleção</a>
+</div>
 </section>
 
 <section class="section shop" id="loja">
@@ -557,6 +571,24 @@ const products = [
  {id:10,name:"Blusa Essencial",category:"Feminino",price:59.90,rating:4.7,reviews:27,label:"Preço especial",sizes:["P","M","G","GG"],colors:["Creme","Bordô","Preto"],image:"https://images.unsplash.com/photo-1564257577-9d5f2d5f5f6a?auto=format&fit=crop&w=850&q=85",description:"Uma blusa essencial, fácil de combinar com calças, saias e sobreposições."},
  {id:11,name:"Camisa Clássica",category:"Masculino",price:119.90,rating:4.6,reviews:16,label:"Clássico",sizes:["P","M","G","GG"],colors:["Branco","Azul","Creme"],image:"https://images.unsplash.com/photo-1598033129183-c4f50c736f10?auto=format&fit=crop&w=850&q=85",description:"Camisa clássica para ocasiões especiais e combinações elegantes."},
  {id:12,name:"Jaqueta Mini",category:"Infantil",price:89.90,rating:4.8,reviews:8,label:"Novidade",sizes:["2 anos","4 anos","6 anos","8 anos"],colors:["Creme","Azul","Rosa"],image:"https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?auto=format&fit=crop&w=850&q=85",description:"Uma opção infantil para completar looks em dias mais frescos."}
+{
+  name: "Camisa Clássica Sênior",
+  category: "idosos",
+  price: 99.90,
+  image: "imagens/camisa-senior.png"
+},
+{
+  name: "Camiseta Teen",
+  category: "adolescentes",
+  price: 59.90,
+  image: "imagens/camiseta-teen.png"
+},
+{
+  name: "Baby Tee Y2K",
+  category: "anos2000",
+  price: 49.90,
+  image: "imagens/baby-tee-y2k.png"
+}
 ];
 
 const $ = id => document.getElementById(id);
