@@ -1,0 +1,91 @@
+
+.diferenciais {
+  padding: 75px 7%;
+  background: #faf6ef;
+  color: #54202b;
+}
+
+.diferenciais-intro {
+  text-align: center;
+  max-width: 650px;
+  margin: 0 auto 40px;
+}
+
+.diferenciais-intro span,
+.diferencial-conteudo > span {
+  color: #a47b43;
+  font-size: 11px;
+  letter-spacing: 2px;
+}
+
+.diferenciais-intro h2 {
+  font-family: Georgia, serif;
+  font-size: clamp(28px, 4vw, 42px);
+  margin: 14px 0;
+}
+
+.diferenciais-intro p,
+.diferencial-conteudo p {
+  color: #756760;
+  line-height: 1.7;
+}
+
+.diferenciais-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  max-width: 1150px;
+  margin: auto;
+}
+
+.diferencial-card {
+  background: #fffdf9;
+  border: 1px solid #e9dfd3;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.diferencial-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 28px #54202b14;
+}
+
+.diferencial-card img {
+  width: 100%;
+  height: 220px;
+  display: block;
+  object-fit: cover;
+}
+
+.diferencial-conteudo {
+  padding: 22px;
+}
+
+.diferencial-conteudo h3 {
+  font-family: Georgia, serif;
+  font-size: 21px;
+  margin: 10px 0;
+  color: #702333;
+}
+
+.diferencial-conteudo p {
+  font-size: 14px;
+  margin-bottom: 0;
+}
+
+@media (max-width: 850px) {
+  .diferenciais-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 550px) {
+  .diferenciais-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .diferencial-card img {
+    height: 240px;
+  }
+}
