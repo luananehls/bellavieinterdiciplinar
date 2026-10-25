@@ -312,6 +312,20 @@ footer .brand-tag{color:var(--gold-light)}
   .modal-card{padding:18px;max-height:94vh}
   .cart-row{grid-template-columns:60px 1fr auto;gap:9px}
   .cart-row img{width:60px;height:78px}
+  /* Corrige os botões dos produtos no celular */
+.quick-add {
+  transform: translateY(0);
+  opacity: 1;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  min-height: 44px;
+  padding: 12px 6px;
+  z-index: 2;
+  touch-action: manipulation;
+}
 }
 @media(prefers-reduced-motion:reduce){
   *,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}
